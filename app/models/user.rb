@@ -8,6 +8,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
 
-
   has_secure_password
+
+  mount_uploader :avatar, AvatarUploader
+
 end
