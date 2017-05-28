@@ -66,3 +66,6 @@ gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'jquery-turbolinks', '~> 2.1'
 gem "bootstrap_form"
 gem 'acts-as-taggable-on', '~> 4.0'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
