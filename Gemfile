@@ -55,3 +55,12 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.11'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
+gem "figaro"
+gem "fog"
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'jquery-turbolinks', '~> 2.1'

@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   # Returns true if current_user exists, false otherwise
-  def logged_in?
+  def signed_in?
     !current_user.nil?
   end
 

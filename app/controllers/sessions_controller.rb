@@ -1,14 +1,15 @@
 class SessionsController < ApplicationController
 
   def create
-    @user = User.find_by(email: params[:user][:email])  # Check if the user exists
+    # byebug
+    @user = User.find_by(email: params[:session][:email]) 
 
-     if @user.try(:authenticate, params[:user][:password]) 
+     if @user.try(:authenticate, params[:session][:password]) 
        session[:user_id] = @user.id
        redirect_to @user
      else
     # If user's login doesn't work, send them back to the login form.
-      @error = "Invalid email or password"
+      flash[:error] = "Invalid email or password"
       render template: "sessions/new"
      end
   end
@@ -21,6 +22,10 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  private
 
+  def session_params
+    params.require(:session).permit(:email, :password)
+  end
 
 end
