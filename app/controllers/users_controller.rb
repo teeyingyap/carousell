@@ -15,6 +15,7 @@ class UsersController < ApplicationController
    
      if @user.save
        session[:user_id] = @user.id
+       sign_in(@user)
        flash[:success] = "Welcome to Carousell!"
        redirect_to @user
      else

@@ -4,8 +4,9 @@ class SessionsController < ApplicationController
     # byebug
     @user = User.find_by(email: params[:session][:email]) 
 
-     if @user.try(:authenticate, params[:session][:password]) 
+     if @user && @user.try(:authenticate, params[:session][:password]) 
        session[:user_id] = @user.id
+       sign_in(@user)
        redirect_to @user
      else
     # If user's login doesn't work, send them back to the login form.
@@ -45,5 +46,6 @@ class SessionsController < ApplicationController
   def session_params
     params.require(:session).permit(:email, :password)
   end
+  
 
 end

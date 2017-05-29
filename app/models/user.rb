@@ -2,10 +2,10 @@ class User < ApplicationRecord
 
   has_many :authentications, :dependent => :destroy
 
-  before_save :generate_remember_token
+  before_save :create_remember_token
 
   validates :username, presence: { message: "*Username is a required field" }
-  #validates :username, format: { without: /\s/, message: "must contain no spaces" }
+  validates :username, format: { without: /\s/, message: "must contain no spaces" }
   validates :username, uniqueness: true
 
   validates :email, presence: { message: "Email is a required field" }
@@ -32,9 +32,23 @@ class User < ApplicationRecord
     return x.token unless x.nil?
   end
 
-  def generate_remember_token
-    self.remember_token = SecureRandom.hex(10) if remember_token.blank?
+
+
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
   end
+
+  def User.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  private
+
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
+
+
 
   # def facebook_user?
   #   provider != nil && uid != nil
