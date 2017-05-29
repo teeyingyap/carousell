@@ -1,0 +1,28 @@
+<div id = "error-field" class="alert-danger" ></div>
+<div class="form-group has-feedback" style="margin: 2em; width: 300px;">
+
+  <div class="text-field">
+    <%= form.label :email %>
+    <%= form.text_field :email, type: 'email', placeholder: "Email address", class: "form-control" %>
+    <i class="glyphicon glyphicon-envelope form-control-feedback"></i>
+  </div>
+
+</div>
+
+<div class="form-group has-feedback" style="margin: 2em; width: 300px;">
+  <div class="password-field">
+    <%= form.label :password %>
+    <%= form.password_field :password, placeholder: "Password", class: "form-control"  %>
+    <i class=" glyphicon glyphicon-lock form-control-feedback"></i>
+  </div>
+
+</div>
+
+ <div class="checkbox">
+    <label><input type="checkbox" value="" checked>Remember me</label>
+ </div>
+
+
+ <div class="submit-field">
+  <%= form.submit class: "btn btn-default btn-primary btn-lg" %>
+</div> 

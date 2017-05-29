@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <%= render partial: 'layouts/navbar' %>
+    <div class="container">
+       <%= flash_messages %>
+    </div>
     <%= yield %>
   </body>
 </html>
