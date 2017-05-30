@@ -8,7 +8,11 @@ Rails.application.routes.draw do
      resources :listings
    end
 
-   resources :listings, controller: "listings"
+
+   resources :listings do
+     resources :comments
+   end 
+
 
 
   get    '/login', to: 'sessions#new'

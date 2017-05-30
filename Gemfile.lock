@@ -44,14 +44,11 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
-    autoprefixer-rails (7.1.1)
-      execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     bootstrap_form (2.7.0)
+    braintree (2.75.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.14.0)
@@ -278,6 +275,10 @@ GEM
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
     pg (0.20.0)
+    pg_search (2.0.1)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      arel (>= 6)
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.3)
@@ -370,8 +371,8 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 4.0)
   bcrypt (~> 3.1, >= 3.1.11)
-  bootstrap-sass (~> 3.3.6)
   bootstrap_form
+  braintree
   byebug
   capybara (~> 2.13)
   carrierwave (~> 1.0)
@@ -387,6 +388,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   pg (~> 0.18)
+  pg_search
   puma (~> 3.7)
   rails (~> 5.1.1)
   sass-rails (~> 5.0)

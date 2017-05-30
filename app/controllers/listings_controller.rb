@@ -4,6 +4,11 @@ class ListingsController < ApplicationController
     if signed_in?
        @listings = current_user.listings.order(:name)
        flash[:error] = "You don't have any listings!" if @listings == []
+    elsif 
+      if params[:term].present?
+        @listings = Listing.where(nil) # creates an anonymous scope
+        @listings = @listings.search_by_name(params[:term]).order(:name)
+      end 
     end 
   end
 
@@ -26,6 +31,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @comments = @listing.comments.order("created_at DESC")
+    @new_comments = @listing.comments.new
   end
 
   def edit

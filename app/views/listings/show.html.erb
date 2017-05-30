@@ -62,6 +62,16 @@
 
 <p>Listed by: <%= link_to @listing.user.username, user_path(@listing.user) %></p>
 
+ <h4 id="comments-count"><%= pluralize(@listing.comments.count, 'Comment') %></h4>
+
+    <div id="comments-list">
+        <%= render partial: @listing.comments %>
+    </div>
+
+    <div id="comment-form">
+      <%= render 'comments/form' %>
+    </div>
+
 
 </div>
 </div>

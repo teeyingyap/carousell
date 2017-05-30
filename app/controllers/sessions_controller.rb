@@ -10,10 +10,16 @@ class SessionsController < ApplicationController
        redirect_to @user
      else
     # If user's login doesn't work, send them back to the login form.
-      flash[:error] = "Invalid email or password"
-      render template: "sessions/new"
+      # flash[:error] = "Invalid email or password"
+      # render template: "sessions/new"
+        respond_to do |format|
+          format.html #{ redirect_to new_user_path}
+          format.js { @user }
+        end
      end
   end
+
+
 
   def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]

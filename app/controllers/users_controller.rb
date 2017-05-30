@@ -11,19 +11,35 @@ class UsersController < ApplicationController
 
 
   def create
-  	 @user = User.new(user_from_params)
-   
-     if @user.save
-       session[:user_id] = @user.id
-       sign_in(@user)
-       flash[:success] = "Welcome to Carousell!"
-       redirect_to @user
-     else
-       flash[:error] = "Fail to sign up"
-       render template: "users/new"
-     end
-
+    @user = User.new(user_from_params)
+    if @user.save
+      session[:user_id] = @user.id
+      sign_in @user
+      flash[:success] = "Welcome to Carousell!"
+      redirect_to @user
+    else
+      respond_to do |format|
+        format.html #{ redirect_to new_user_path}
+        format.js { @user }
+      end
+    end
   end
+  
+  # def create
+  #    @user = User.new(user_from_params)
+   
+  #    if @user.save
+  #      session[:user_id] = @user.id
+  #      sign_in(@user)
+  #      flash[:success] = "Welcome to Carousell!"
+  #      redirect_to @user
+  #    else
+  #      flash[:error] = "Fail to sign up"
+  #      render template: "users/new"
+  #    end
+
+  # end
+
 
   def edit
     @user = User.find(params[:id])
