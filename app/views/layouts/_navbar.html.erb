@@ -11,11 +11,11 @@
         <a class="navbar-brand" href="/">Carousell</a>
     </div>
 
-    <% if controller.action_name == "index" %>
+
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 <form class="navbar-form navbar-left">
-   <%= form_tag(listings_path, method: :get, remote: true, class: "navbar-form navbar-left") do %>
-  <%= text_field_tag :term, params[:term], placeholder: "Enter a location", list: "countries", class: "form-control" %>
+   <%= form_tag(listings_path, method: :get, class: "navbar-form navbar-left") do %>
+  <%= text_field_tag :term, params[:term], placeholder: "Search for an item", class: "form-control" %>
 
   <%= submit_tag 'Search', name: nil, class: "btn btn-primary" %>
 <% end %>
@@ -24,7 +24,9 @@
 </form>
 
 
-<% end %>
+
+
+
   <% if !signed_in? %>
     <ul class="nav navbar-nav navbar-right">
       <button type="button" class="btn btn-link btn-lg pull-left" data-toggle="modal" data-target="#myModal">Log In</button>
