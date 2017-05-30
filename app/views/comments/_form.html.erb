@@ -3,12 +3,31 @@
 <div class="form-group has-feedback">
 
   <div class="text-field">
-    <%= form.text_area :content, type: 'email', placeholder: "Write a public comment...", class: "form-control" %>
+    <%= form.text_area :content, type: 'email', placeholder: "Write a public comment...", required: true, class: "form-control", id: "comment-field" %>
   </div>
 
    <div class="submit-field">
-     <%= form.submit "Comment", class: "btn btn-default" %>
+     <%= form.submit "Comment", class: "btn btn-default", id: "sendButton" %>
   </div> 
 </div>
 
 <% end %>
+
+<!-- <script type="text/javascript">
+$(document).ready(function(){
+    $('#sendButton').attr('disabled',true);
+    
+    $('#comment-field').keyup(function(){
+        if($(this).val().length !=0){
+            $('#sendButton').attr('disabled', false);
+        }
+        else
+        {
+            $('#sendButton').attr('disabled', true);        
+        }
+    })
+});
+
+</script>
+
+ -->

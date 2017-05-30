@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-
+  before_action :check_sign_in
   def create
   	@listing = Listing.find(params[:listing_id])
   	@comment = @listing.comments.new(comment_from_params)
@@ -7,10 +7,7 @@ class CommentsController < ApplicationController
     if @comment.save
       @new_comments = @listing.comments.new
       respond_to do |format|
-          format.html do
-          flash[:success] = 'Your comment has been posted.'
-          redirect_to @listing
-        end
+        format.html
         format.js
       end
       # # redirect_to @listing 
@@ -22,22 +19,6 @@ class CommentsController < ApplicationController
       render 'listings/show'
     end
 
-    # if @comment.save
-    #   @new_comment = @post.comments.new
-    #   respond_to do |format|
-    #     format.html do
-    #       flash[:success] = 'Your comment has been posted.'
-    #       redirect_to @post
-    #     end
-    #     format.js
-    #   end
-    # else
-    #   @new_comment = @comment
-    #   respond_to do |format|
-    #     format.html { render @post }
-    #     format.js { render action: 'failed_save' }
-    #   end
-    # end
   end
 
 
@@ -50,5 +31,12 @@ class CommentsController < ApplicationController
     def find_listing
       @listing = Listing.find(params[:listing_id])
     end 
+
+    def check_sign_in
+      unless signed_in?
+        flash[:error] = 'Please sign in.'
+        redirect_to '/login'
+      end 
+    end  
 
 end
