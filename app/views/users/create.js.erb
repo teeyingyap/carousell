@@ -1,0 +1,9 @@
+<% @user.errors.each do |field, message| %>
+	<% @block =  '#' + field.to_s + '-block' %>
+	var block = '<%= @block %>'
+	$(block).html('<%= j (message)%>');
+    $(block).closest(".form-group").addClass("has-error");
+<% end %>
+
+
+

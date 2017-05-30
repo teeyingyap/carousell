@@ -1,0 +1,7 @@
+<% @block =  '#error-field' %>
+var block = '<%= @block %>'
+$(block).html("Bad email or password.").css({"padding": "10px 30px 10px 15px", "border-radius": "8px"}).fadeOut(10000).click(function() {
+	$(this).hide();
+});
+
+
