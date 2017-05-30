@@ -1,0 +1,37 @@
+<div class="text-field">
+<!--   <%= form.label :name %> -->
+  <%= form.text_field :name, label: "What are you selling?" %>
+</div>
+
+
+  <%= form.label :price %>
+<div class="input-group">
+  <span class="input-group-addon"><b>RM</b></span>
+  <%= form.number_field_without_bootstrap :price, min: "0", class: "form-control" %>
+</div>
+<br />
+<!--<div class="text-field"> -->
+<!--   <%= form.label :price %> -->
+<!--   <%= form.number_field :price, min: "0" %>
+</div> -->
+
+<!--<%= form.form_group :condition, label: { text: "Condition" } do %><br />
+  <%= form.radio_button :condition, 0, label: "Used", inline: true %>
+  <%= form.radio_button :condition, 1, label: "New", inline: true %>
+<% end %> -->
+
+
+   <%= form.collection_radio_buttons :condition, Listing.conditions, :first, :first %>
+
+<div class="text-field">
+<!--   <%= form.label :description %> -->
+  <%= form.text_area :description %>
+</div>
+
+
+<div class="file-field">
+<!--   <%= form.label "Photos" %><br /> -->
+  <%= form.file_field :photos, multiple: true %>
+</div>
+
+
