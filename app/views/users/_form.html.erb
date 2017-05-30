@@ -18,18 +18,16 @@
 </div>
 
 
-</div>
 <div class="form-group has-feedback" style="margin: 2em; width: 300px;">
 <div class="password-field">
   <%= form.label :password %>
   <%= form.password_field :password, placeholder: "Create a Password", class: "form-control" %>
   <i class=" glyphicon glyphicon-lock form-control-feedback"></i>
 </div>
-
 <span id = "password-block" class="text-danger" ></span>
 </div>
 
  <div class="submit-field">
-      <%= form.submit class: "btn btn-default btn-primary" %>
+      <%= form.submit "Sign Up", class: "btn btn-default btn-primary" %>
  </div>
 

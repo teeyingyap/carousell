@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :authentications, :dependent => :destroy
+  has_many :listings, :dependent => :destroy
 
   before_save :create_remember_token
 

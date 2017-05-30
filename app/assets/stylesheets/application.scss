@@ -4,3 +4,28 @@
 @import "page";
 @import "users";
 @import "sessions";
+
+.special-img {
+    position: relative;
+    top: -5px;
+    float: left;
+    left: -5px;
+    height: 40px;
+    width: 40px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.navbar-nav > li > a {padding-top:10px !important; padding-bottom:5px !important;}
+.navbar {min-height:32px !important}
+
+body {
+	background-color: #f2f2f2;
+}
+
+
+.navbar-custom {
+    background-color: #FFFFFF;
+}

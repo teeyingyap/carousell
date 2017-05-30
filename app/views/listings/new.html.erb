@@ -1,0 +1,19 @@
+<div class="col-md-12">
+<li class="list-group-item">
+
+  <h2>SELL AN ITEM</h2>
+
+  <%= bootstrap_form_for @listing do |form| %>
+    <%= render partial: '/listings/form', object: form %>
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+
+    <div class="other-links">
+       <%= link_to 'Back', root_path %>
+    </div>
+  <% end %>
+
+</li>
+</div>
