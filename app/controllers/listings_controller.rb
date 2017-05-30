@@ -31,6 +31,8 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @comments = @listing.comments.order("created_at DESC")
+    @new_comments = @listing.comments.new
   end
 
   def edit

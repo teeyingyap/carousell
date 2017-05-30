@@ -1,0 +1,14 @@
+<%= form_for [@listing, @new_comments], remote: true do |form| %>
+
+<div class="form-group has-feedback">
+
+  <div class="text-field">
+    <%= form.text_area :content, type: 'email', placeholder: "Write a public comment...", class: "form-control" %>
+  </div>
+
+   <div class="submit-field">
+     <%= form.submit "Comment", class: "btn btn-default" %>
+  </div> 
+</div>
+
+<% end %>
