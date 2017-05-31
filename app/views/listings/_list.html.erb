@@ -1,15 +1,16 @@
-<div class= "row">
-
-	<% @listings.each do |listing| %>
-      <div class="col-md-3">
-      <!-- <li class="list-group-item"> -->
-		<div class="well">
-
-			<h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
-
-		</div>
-     </div>
-	<% end %>
-
-
+<div class="center">
+    <div class="row">
+    <% @listings.each do |listing| %>
+        <div class="col-md-3 col-xs-6">
+            <div class="icon">
+                <div class="thumbnail" > 
+                    <%= link_to image_tag(listing.photos.first.thumb.url(:medium), class: "img-responsive aspect"), user_listing_path(listing.user, listing) %>
+                </div>
+                <div class="caption">
+                    <h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    </div>
 </div>

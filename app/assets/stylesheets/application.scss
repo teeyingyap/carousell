@@ -2,6 +2,9 @@
 @import "page";
 @import "users";
 @import "sessions";
+@import "braintree";
+@import "listings";
+
 
 .special-img {
     position: relative;
@@ -16,6 +19,15 @@
     border-radius: 50%;
 }
 
+.prof-circle {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+}
+
+
 .navbar-nav > li > a {padding-top:10px !important; padding-bottom:5px !important;}
 .navbar {min-height:32px !important}
 
@@ -26,4 +38,26 @@ body {
 
 .navbar-custom {
     background-color: #FFFFFF;
+}
+
+.thumnbnail {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.caption {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.caption p {
+  font-size: 15px;
+  margin: 0px;
+}
+
+.caption h3 {
+  font-size: 17px;
+  margin: 2px;
 }
