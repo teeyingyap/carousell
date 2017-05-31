@@ -29,7 +29,7 @@
 
 
 
-<% if current_user && current_user.id != @user.id %>
+<% if current_user && current_user.id != @user.id || !signed_in? %>
 
   <div class= "row">
 <h4>Listings (<%= @user.listings.count%>)</h4>
