@@ -23,15 +23,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process scale: [200, 300]
-  process resize_to_fit: [1024, 700]
-  # def scale(width, height)
-  #   # do something
-  # end
+  #process scale: [800, 800]
+  process resize_to_fill: [500, 500] #if use fill then the carousell wont move, if use fit then it moves
+  def scale(width, height)
+    # do something
+  end
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process resize_to_fit: [400, 400]
+    process resize_to_fit: [500, 500]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

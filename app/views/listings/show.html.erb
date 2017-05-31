@@ -1,7 +1,9 @@
+<h1><%= @listing.name %></h1>
+
 <div class="row">
   <div class="col-md-8">
 
-<h1><%= @listing.name %></h1>
+
 
 <% if @listing.photos.present? %>
 
@@ -42,8 +44,9 @@
 
 
 <% end %>
+</div>
 
-
+<div class="col-xs-12 col-md-4">
 <p>Price: RM<%= @listing.price %></p>
 
 <p>Description: <%= @listing.description %></p>
@@ -81,4 +84,5 @@
 
 
 </div>
+
 </div>
