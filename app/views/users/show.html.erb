@@ -1,3 +1,54 @@
-<h1>This is the User Profile</h1>
-<%= image_tag current_user.avatar.thumb.url, class: "img-circle" %>
-<%= link_to 'Edit your profile', edit_user_path %> 
+<div class= "row">
+  <div class="col-md-3">
+
+    <%= image_tag @user.avatar.nav.url, class: "prof-circle" %>
+    
+</div>
+
+
+  <div class="col-md-6">
+    <% if current_user && current_user.id == @user.id %>
+      <h3>Hey, @<%= @user.username %>!</h3>
+    <% elsif current_user && current_user.id != @user.id || !signed_in? %>
+      <h3>Hey, I'm @<%= @user.username %>!</h3>
+    <% end %>
+    <b>Joined in <%= @user.created_at.strftime("%B") %> <%= @user.created_at.year %></b>
+    <div class="well">
+      <% if @user.bio.nil? || @user.bio == "" %>
+      <p>@<%= @user.username %> is on Carousell!</p>
+      <% else %>
+      <p><%= @user.bio %></p>
+      <% end %>
+    </div>
+    <% if current_user && current_user.id == @user.id %>
+    <b><%= link_to 'Edit profile', edit_user_path(current_user) %></b>
+    <% end %>
+ </div>
+</div>
+
+
+
+
+<% if current_user && current_user.id != @user.id %>
+
+  <div class= "row">
+<h4>Listings (<%= @user.listings.count%>)</h4>
+  <% @user.listings.each do |listing| %>
+      <div class="col-md-12">
+      <!-- <li class="list-group-item"> -->
+    <div class="well">
+
+      <h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+
+    </div>
+     </div>
+  <% end %>
+
+</div>
+
+
+    <% end %>
+
+<%= link_to 'Back', root_path %> 
+
+

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :transactions
   before_save :create_remember_token
 
   validates :username, presence: { message: "*Username is a required field" }

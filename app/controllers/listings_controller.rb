@@ -8,6 +8,10 @@ class ListingsController < ApplicationController
       if params[:term].present?
         @listings = Listing.where(nil) # creates an anonymous scope
         @listings = @listings.search_by_name(params[:term]).order(:name)
+          respond_to do |format|
+          format.html
+          format.js
+       end
       end 
     end 
   end
@@ -33,6 +37,7 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @comments = @listing.comments.order("created_at DESC")
     @new_comments = @listing.comments.new
+    @transaction = @listing.transactions.new
   end
 
   def edit

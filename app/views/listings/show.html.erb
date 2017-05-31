@@ -3,17 +3,6 @@
 
 <h1><%= @listing.name %></h1>
 
-
-<p>Price: RM<%= @listing.price %></p>
-
-<p>Description: <%= @listing.description %></p>
-<p>Condition: <%= @listing.condition %></p>
-
-<!-- <% @listing.photos.each do |photo| %>
-<%= image_tag photo.url %>
-<% end %> -->
-
-
 <% if @listing.photos.present? %>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -54,10 +43,28 @@
 
 <% end %>
 
- 
+
+<p>Price: RM<%= @listing.price %></p>
+
+<p>Description: <%= @listing.description %></p>
+<p>Condition: <%= @listing.condition %></p>
+
+<!-- <% @listing.photos.each do |photo| %>
+<%= image_tag photo.url %>
+<% end %> -->
+
+
+
+
 
 <% if current_user && current_user.id == @listing.user.id %>
 <%= link_to 'Edit your listing', edit_user_listing_path(current_user, @listing) %>
+<% else %>
+
+<%= form_tag listing_transactions_path(@listing, @transaction), method: :post do %>
+  <%= submit_tag 'Buy' %>
+<% end %>
+
 <% end %>
 
 <p>Listed by: <%= link_to @listing.user.username, user_path(@listing.user) %></p>

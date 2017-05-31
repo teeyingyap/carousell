@@ -1,0 +1,92 @@
+ <div class="demo-frame">  
+
+      <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
+
+        <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
+        <div id="card-number" class="hosted-field"></div>
+
+        <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>      
+        <div id="expiration-date" class="hosted-field"></div>
+
+        <%= form.label :cvv, "CVV", html: {class: "hosted-fields--label"} %>
+        <div id="cvv" class="hosted-field"></div>
+
+        <%= form.hidden_field "payment_method_nonce" %>
+        <%= form.hidden_field :transaction, :value => @transaction.id %>
+
+
+        <div class="button-container">
+          <%= form.submit "Purchase", class: "button button--small button--green", id: "submit-payment-btn" %>
+        </div>
+      <% end %>
+    </div>
+
+
+
+<script type="text/javascript">
+
+var form = document.querySelector('#cardForm');
+var submit = document.querySelector("#submit-payment-btn");
+
+braintree.client.create({
+ authorization: '<%= @client_token %>'
+}, function (clientErr, clientInstance) {
+  if (clientErr) {
+    // Handle error in client creation
+    return;
+  }
+
+  braintree.hostedFields.create({
+    client: clientInstance,
+    styles: {
+      'input': {
+        'font-size': '14pt'
+      },
+      'input.invalid': {
+        'color': 'red'
+      },
+      'input.valid': {
+        'color': 'green'
+      }
+    },
+    fields: {
+      number: {
+        selector: '#card-number',
+        placeholder: '4111 1111 1111 1111'
+      },
+      cvv: {
+        selector: '#cvv',
+        placeholder: '123'
+      },
+      expirationDate: {
+        selector: '#expiration-date',
+        placeholder: '10/2019'
+      }
+    }
+  }, function (hostedFieldsErr, hostedFieldsInstance) {
+    if (hostedFieldsErr) {
+      // Handle error in Hosted Fields creation
+      return;
+    }
+
+    submit.removeAttribute('disabled');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+        if (tokenizeErr) {
+          // Handle error in Hosted Fields tokenization
+          return;
+        }
+
+        // Put `payload.nonce` into the `payment_method_nonce` input, and then
+        // submit the form. Alternatively, you could send the nonce to your server
+        // with AJAX.
+        document.querySelector('input[name="checkout_form[payment_method_nonce]"]').value = payload.nonce;
+        form.submit();
+      });
+    }, false);
+  });
+});
+</script>
