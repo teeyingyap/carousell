@@ -1,0 +1,180 @@
+/* line 1, /home/teeyingyap/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap_form-2.7.0/app/assets/stylesheets/rails_bootstrap_forms.css */
+.rails-bootstrap-forms-date-select select,
+.rails-bootstrap-forms-time-select select,
+.rails-bootstrap-forms-datetime-select select {
+  display: inline-block;
+  width: auto;
+}
+
+/* line 8, /home/teeyingyap/.rbenv/versions/2.4.0/lib/ruby/gems/2.4.0/gems/bootstrap_form-2.7.0/app/assets/stylesheets/rails_bootstrap_forms.css */
+.rails-bootstrap-forms-error-summary {
+  margin-top: 10px;
+}
+
+/* line 1, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/users.scss */
+h3 {
+  text-align: left;
+  font-size: 44px;
+}
+
+/* line 5, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.hosted-field {
+  height: 50px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  display: inline-block;
+  box-shadow: none;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #dddddd;
+  line-height: 20px;
+  background: #fcfcfc;
+  margin-bottom: 12px;
+  background: linear-gradient(to right, white 50%, #fcfcfc 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 300ms ease-in-out;
+}
+
+/* line 25, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.hosted-fields--label {
+  font-family: courier, monospace;
+  text-transform: uppercase;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* line 33, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.button-container {
+  display: block;
+  text-align: center;
+}
+
+/* line 38, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+#submit-payment-btn {
+  cursor: pointer;
+  font-weight: 500;
+  line-height: inherit;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+}
+
+/* line 53, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.button--small {
+  padding: 10px 20px;
+}
+
+/* line 57, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.button--green {
+  outline: none;
+  background-color: #64d18a;
+  border-color: #64d18a;
+  color: white;
+  transition: all 200ms ease;
+}
+
+/* line 65, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.button--green:hover {
+  background-color: #8bdda8;
+  color: white;
+}
+
+/* line 70, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.braintree-hosted-fields-focused {
+  border: 1px solid #64d18a;
+  border-radius: 1px;
+  background-position: left bottom;
+}
+
+/* line 76, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+.braintree-hosted-fields-invalid {
+  border: 1px solid #ed574a;
+}
+
+/* line 83, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/braintree.scss */
+#cardForm {
+  max-width: 50.75em;
+  margin: 0 auto;
+  padding: 1.875em;
+}
+
+/* line 9, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.special-img {
+  position: relative;
+  top: -5px;
+  float: left;
+  left: -5px;
+  height: 40px;
+  width: 40px;
+}
+
+/* line 18, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.img-circle {
+  border-radius: 50%;
+}
+
+/* line 22, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.prof-circle {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+}
+
+/* line 31, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.navbar-nav > li > a {
+  padding-top: 10px !important;
+  padding-bottom: 5px !important;
+}
+
+/* line 32, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.navbar {
+  min-height: 32px !important;
+}
+
+/* line 34, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+body {
+  background-color: #f2f2f2;
+}
+
+/* line 39, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.navbar-custom {
+  background-color: #FFFFFF;
+}
+
+/* line 43, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.thumnbnail {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 49, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.caption {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 55, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.caption p {
+  font-size: 15px;
+  margin: 0px;
+}
+
+/* line 60, /home/teeyingyap/Desktop/carousell/app/assets/stylesheets/application.scss */
+.caption h3 {
+  font-size: 17px;
+  margin: 2px;
+}
