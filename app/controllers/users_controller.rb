@@ -47,10 +47,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(user_from_params)
+    if @user.update_attributes(user_update_params)
       flash[:notice] = "Your profile is updated successfully."
       redirect_to @user
     else
+      # byebug
       render template: "users/edit"
     end 
   end 
@@ -59,6 +60,10 @@ class UsersController < ApplicationController
 
   def user_from_params
    params.require(:user).permit(:email, :username, :password, :avatar, :bio)
+  end
+
+  def user_update_params
+    params.require(:user).permit(:username, :avatar, :bio)
   end
 
 end
