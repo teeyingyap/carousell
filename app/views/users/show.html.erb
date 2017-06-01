@@ -29,25 +29,25 @@
 
 
 
-<% if current_user && current_user.id != @user.id || !signed_in? %>
 
-  <div class= "row">
-<h4>Listings (<%= @user.listings.count%>)</h4>
-  <% @user.listings.each do |listing| %>
-      <div class="col-md-12">
-      <!-- <li class="list-group-item"> -->
-    <div class="well">
-
-      <h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
-
+<div class="center">
+  <div class="row">
+    <h4>Listings (<%= @user.listings.count%>)</h4>
+    <% @user.listings.each do |listing| %>
+        <div class="col-md-3 col-xs-6">
+            <div class="icon">
+                <div class="thumbnail" > 
+                    <%= link_to image_tag(listing.photos.first.thumb.url, class: "img-responsive aspect"), user_listing_path(listing.user, listing) %>
+                </div>
+                <div class="caption">
+                    <h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
+                </div>
+            </div>
+        </div>
+    <% end %>
     </div>
-     </div>
-  <% end %>
-
 </div>
 
-
-    <% end %>
 
 <%= link_to 'Back', root_path %> 
 

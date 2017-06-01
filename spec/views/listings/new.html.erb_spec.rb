@@ -19,6 +19,7 @@ RSpec.feature "Listing", :type => :feature do
 
       fill_in "What are you selling?", :with => "Iphone"
       fill_in "Price", :with => "2000"
+      page.choose('Used')
       click_button "Create Listing"
       expect(page).to have_text("Iphone") 
   end 

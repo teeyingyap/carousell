@@ -2,13 +2,9 @@ class PageController < ApplicationController
   def index
   	if params[:term].present?
        @listings = Listing.where(nil) # creates an anonymous scope
-       @listings = @listings.search_by_name(params[:term]).order(:name)
-       respond_to do |format|
-       	  format.html
-          format.js
-       end
+       @listings = @listings.search_by_name(params[:term]).order(:name).page params[:page]
     else
-  	  @listings = Listing.order(:name)
+  	  @listings = Listing.order(:name).page params[:page]
     end 
 
   end
