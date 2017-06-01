@@ -40,6 +40,14 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'guard-rspec'
+  gem 'rspec'
+  gem "rspec-given"
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', require: false
+  gem 'factory_girl_rails'
+  gem 'shoulda-callback-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -72,3 +80,4 @@ gem 'omniauth-facebook'
 gem 'braintree'
 gem 'pg_search'
 gem 'rails_12factor', group: :production
+

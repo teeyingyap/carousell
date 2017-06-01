@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       sign_in @user
-      flash[:success] = "Welcome to Carousell!"
+      flash[:success] = "Welcome to Jarousell!"
       redirect_to @user
     else
       respond_to do |format|
-        format.html #{ redirect_to new_user_path}
+        format.html { redirect_to new_user_path}
         format.js { @user }
       end
     end
@@ -47,8 +47,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update_attributes(user_from_params)
-    redirect_to @user
+    if @user.update_attributes(user_from_params)
+      flash[:notice] = "Your profile is updated successfully."
+      redirect_to @user
+    else
+      render template: "users/edit"
+    end 
   end 
 
   private
