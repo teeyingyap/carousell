@@ -10,10 +10,11 @@ class User < ApplicationRecord
   validates :username, format: { without: /\s/, message: "must contain no spaces" }
   validates :username, uniqueness: true
 
-  validates :email, presence: { message: "Email is a required field" }
+  validates :email, presence: { message: "*Email is a required field" }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, message: "*Only valid email allowed"}
   validates :email, uniqueness: true
-
+  
+  validates :password, length: { minimum: 8, maximum: 20, message: "*Password must be within 8 to 20 characters" } 
   
   has_secure_password
 
