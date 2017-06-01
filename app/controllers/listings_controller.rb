@@ -1,19 +1,26 @@
 class ListingsController < ApplicationController
 
   def index
-    if signed_in?
-       @listings = current_user.listings.order(:name)
-       flash[:error] = "You don't have any listings!" if @listings == []
-    elsif 
-      if params[:term].present?
-        @listings = Listing.where(nil) # creates an anonymous scope
-        @listings = @listings.search_by_name(params[:term]).order(:name)
-          respond_to do |format|
-          format.html
-          format.js
-       end
-      end 
-    end 
+    # if signed_in?
+      if current_user.id == params[:user_id]
+        @listings = current_user.listings.order(:name).page params[:page]
+        flash[:error] = "You don't have any listings!" if @listings == []
+      elsif params[:category].present?
+        @listings = Listing.where(:category => params[:category]).order(:name).page params[:page]
+      else
+        @user = User.find(params[:user_id])
+        @listings = @user.listings.order(:name).page params[:page]
+      end
+    # elsif 
+      # if params[:term].present?
+      #   @listings = Listing.where(nil) # creates an anonymous scope
+      #   @listings = @listings.search_by_name(params[:term]).order(:name)
+      #  #    respond_to do |format|
+      #  #    format.html
+      #  #    format.js
+      #  # end
+      # end 
+    # end 
   end
 
 
@@ -52,7 +59,7 @@ class ListingsController < ApplicationController
 
 
   def listing_from_params
-    params.require(:listing).permit(:name, :price, :condition, :description, photos: [], tag_list:[])
+    params.require(:listing).permit(:name, :price, :condition, :description, :category, photos: [])
   end
 
 

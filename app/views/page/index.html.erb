@@ -12,7 +12,21 @@
 <%= link_to 'Back', root_path %> 
 
 <h1>HI</h1> -->
+<div class="row">
+  <div class="col-xs-12 col-md-2">
+    <b>Shop by category</b>
+ 	<li><%= link_to "Electronics", listings_path(:category=>"Electronics") %></li>
+ 	<li><%= link_to "Clothing & Accessories", listings_path(:category=>"Fashion") %></li>
+	<li><%= link_to "Home & Lifestyle", listings_path(:category=>"Lifestyle") %></li>
+	<li><%= link_to "Hobbies & Entertainment", listings_path(:category=>"Entertainment") %></li>
+	<li><%= link_to "Other", listings_path(:category=>"Other") %></li>
 
-<div id="listing-lists">
-<%= render 'list', object: @listings %>
+
+</div>
+
+  <div class="col-md-10">
+    <div id="listing-lists">
+      <%= render 'list', object: @listings %>
+    </div>
+  </div>
 </div>

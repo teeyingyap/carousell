@@ -4,7 +4,7 @@
         <div class="col-md-3 col-xs-6">
             <div class="icon">
                 <div class="thumbnail" > 
-                    <%= link_to image_tag(listing.photos.first.thumb.url(:medium), class: "img-responsive aspect"), user_listing_path(listing.user, listing) %>
+                    <%= link_to image_tag(listing.photos.first.thumb.url, class: "img-responsive aspect"), user_listing_path(listing.user, listing) %>
                 </div>
                 <div class="caption">
                     <h4><%= link_to listing.name, user_listing_path(listing.user, listing) %></h4>
@@ -13,4 +13,9 @@
         </div>
     <% end %>
     </div>
+</div>
+
+<br />
+<div class="row">
+<%= paginate @listings %>
 </div>

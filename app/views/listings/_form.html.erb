@@ -20,7 +20,8 @@
   <%= form.radio_button :condition, 1, label: "New", inline: true %>
 <% end %> -->
 
-
+  <%= form.select :category, options_for_select(Listing.categories.keys), { class: "selectpicker" } %>
+<br />
    <%= form.collection_radio_buttons :condition, Listing.conditions, :first, :first %>
 
 <div class="text-field">
