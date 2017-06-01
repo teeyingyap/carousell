@@ -12,5 +12,5 @@ class Listing < ApplicationRecord
  
   validates :name, presence: true
   validates :price, presence: true
-  validates :condition, presence: true
+  # validates :condition, presence: true
 end
