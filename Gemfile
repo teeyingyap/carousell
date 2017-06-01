@@ -47,6 +47,7 @@ group :development, :test do
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'shoulda-callback-matchers'
+  gem 'rails-controller-testing'
 end
 
 group :development do
