@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_update_params)
-      flash[:notice] = "Your profile is updated successfully."
+      flash[:notice] = "Your profile is updated successfully." #change has_edited boolean to true
       redirect_to @user
     else
       # byebug

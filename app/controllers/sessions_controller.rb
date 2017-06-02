@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-# include SessionsHelper
+include SessionsHelper
   def create
     # byebug
     @user = User.find_by(email: params[:session][:email]) 
