@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  before_action :check_current_user, only: [:edit, :update] 
   def new
     @user = User.new  #initialize an empty object for the form, so that we can fill in with details using the form.
     render template: "users/new"
@@ -66,4 +66,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :avatar, :bio)
   end
 
+  def check_current_user
+    if current_user.id != params[:id]
+      flash[:error] = "You shall not pass!!!"
+      redirect_to root_path
+    end
+  end 
+  
 end

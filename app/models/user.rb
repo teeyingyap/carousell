@@ -6,15 +6,16 @@ class User < ApplicationRecord
   has_many :transactions
   before_save :create_remember_token
 
-  validates :username, presence: { message: "*Username is a required field" }
-  validates :username, format: { without: /\s/, message: "must contain no spaces" }
-  validates :username, uniqueness: true
+  validates :username, 
+    presence: { message: "*Username is a required field" },
+    format: { without: /\s/, message: "must contain no spaces" },
+    uniqueness: true
 
   validates :email, presence: { message: "*Email is a required field" }
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, message: "*Only valid email allowed"}
   validates :email, uniqueness: true
   
-  #validates :password, length: { minimum: 8, maximum: 20, message: "*Password must be within 8 to 20 characters" } 
+  validates :password, length: { minimum: 8, maximum: 20, message: "*Password must be within 8 to 20 characters" }, on: :create 
   
   has_secure_password
 
