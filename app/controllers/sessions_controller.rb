@@ -31,7 +31,10 @@ include SessionsHelper
       @notice = "Signed in!"
     else
       user = User.create_with_auth_and_hash(authentication, auth_hash)
-      @next = edit_user_path(user)   
+      sign_in(user)
+      user.has_edited = false
+      user.save
+      @next = edit_user_path(user) 
       @notice = "User created - confirm or edit details..."
     end
     session[:user_id] = user.id
@@ -42,9 +45,12 @@ include SessionsHelper
 
 
   def destroy
-    session[:user_id] = nil
-    flash[:notice] = "You have successfully logged out."
-    redirect_to root_url
+    if signed_in?
+      session[:user_id] = nil
+      cookies[:remember_token] = nil
+      flash[:notice] = "You have successfully logged out."
+      redirect_to root_url
+    end 
   end
 
   private

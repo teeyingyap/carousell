@@ -9,7 +9,7 @@ class Listing < ApplicationRecord
   enum status: [:Unsold, :Sold]
   enum category: [:Electronics, :Fashion, :Lifestyle, :Entertainment, :Other]
 
-  pg_search_scope :search_by_name, :against => [:name], using: { tsearch: { prefix: true } }
+  pg_search_scope :search_by_name, :against => [:name], using: { tsearch: { prefix: true, dictionary: "english" } }
   paginates_per 8
   validates :name, presence: true
   validates :price, presence: true
@@ -27,3 +27,4 @@ class Listing < ApplicationRecord
 
 
 end
+ 

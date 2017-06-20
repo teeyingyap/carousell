@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170601111548) do
+ActiveRecord::Schema.define(version: 20170602111854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20170601111548) do
     t.datetime "updated_at", null: false
     t.string "avatar"
     t.string "remember_token"
+    t.boolean "has_edited", default: true
   end
 
   add_foreign_key "authentications", "users"
