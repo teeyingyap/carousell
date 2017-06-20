@@ -15,11 +15,11 @@ module SessionsHelper
 
 
   def current_user
-    puts cookies[:remember_token]
+    # puts cookies[:remember_token]
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
     elsif cookies[:remember_token]
-      puts "Raw: #{cookies[:remember_token]}"
+      # puts "Raw: #{cookies[:remember_token]}"
       remember_token = User.encrypt(cookies[:remember_token])
       @current_user ||= User.find_by(remember_token: remember_token)
     end

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :check_sign_in
+  before_action :fb_sign_in_must_update_details 
   def create
   	@listing = Listing.find(params[:listing_id])
   	@comment = @listing.comments.new(comment_from_params)

@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_action :fb_sign_in_must_update_details
 
   def index
     # if signed_in?
@@ -7,6 +8,9 @@ class ListingsController < ApplicationController
         flash[:error] = "You don't have any listings!" if @listings == []
       elsif params[:category].present?
         @listings = Listing.where(:category => params[:category]).order(:name).page params[:page]
+      elsif params[:term].present?
+        @listings = Listing.where(nil) # creates an anonymous scope
+        @listings = @listings.search_by_name(params[:term]).order(:name).page params[:page]
       else
         @user = User.find(params[:user_id])
         @listings = @user.listings.order(:name).page params[:page]
@@ -23,7 +27,7 @@ class ListingsController < ApplicationController
     # end 
   end
 
-
+ 
 
   def new
     @listing = Listing.new  #initialize an empty object for the form, so that we can fill in with details using the form.
@@ -57,7 +61,8 @@ class ListingsController < ApplicationController
     redirect_to @listing
   end 
 
-
+  private
+  
   def listing_from_params
     params.require(:listing).permit(:name, :price, :condition, :description, :category, photos: [])
   end
