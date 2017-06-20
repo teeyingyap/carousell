@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :authentications, :dependent => :destroy
   has_many :listings, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :transactions
+  has_many :transactions, :dependent => :destroy
   # before_save :create_remember_token
 
   validates :username, 
