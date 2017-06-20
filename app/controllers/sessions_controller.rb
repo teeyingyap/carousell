@@ -26,6 +26,7 @@ include SessionsHelper
     authentication = Authentication.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"]) || Authentication.create_with_omniauth(auth_hash)
     if authentication.user
       user = authentication.user 
+      sign_in(user)
       authentication.update_token(auth_hash)
       @next = root_url
       @notice = "Signed in!"
