@@ -1,6 +1,10 @@
-class UsersController < ApplicationController
-  before_action :check_current_user, only: [:edit, :update] 
+class UsersController < ApplicationController 
   before_action :fb_sign_in_must_update_details, only: [:show] 
+
+  before_action only: [:edit, :update] do
+   check_current_user(params[:id])
+  end 
+
   def new
     @user = User.new  #initialize an empty object for the form, so that we can fill in with details using the form.
     render template: "users/new"
@@ -41,9 +45,13 @@ class UsersController < ApplicationController
 
   # end
 
-
   def edit
-    @user = User.find(params[:id])
+    if !current_user
+        flash[:error] = 'Please sign in.'
+        redirect_to '/login'
+    else
+      @user = User.find(params[:id])
+    end
   end 
 
   def update
@@ -68,13 +76,4 @@ class UsersController < ApplicationController
   def user_update_params
     params.require(:user).permit(:username, :avatar, :bio)
   end
-
-  def check_current_user
-    if current_user.id.to_s != params[:id]
-      flash[:error] = "You shall not pass!!!"
-      redirect_to root_path
-    end
-  end 
-
-
 end

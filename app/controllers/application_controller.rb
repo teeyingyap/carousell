@@ -11,5 +11,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
+  def check_current_user(id)
+    if current_user && id
+      if current_user.id.to_s != id
+        flash[:error] = "You shall not pass!!!"
+        redirect_to root_path
+      end
+    end
+  end 
 end
